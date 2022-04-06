@@ -4,6 +4,8 @@ ARG BASE_CUDA_VERSION=10.1
 ARG GPU_IMAGE=nvidia/cuda:${BASE_CUDA_VERSION}-devel-centos7
 FROM centos:7 as base
 
+ENV http_proxy http://child-prc.intel.com:913
+ENV https_proxy http://child-prc.intel.com:913
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
@@ -37,6 +39,8 @@ FROM base as python
 # build python
 COPY manywheel/build_scripts /build_scripts
 ADD ./common/install_cpython.sh /build_scripts/install_cpython.sh
+
+COPY patchelf-0.10.tar.gz .
 RUN bash build_scripts/build.sh && rm -r build_scripts
 
 # remove unncessary python versions

@@ -64,7 +64,7 @@ curl --version
 curl-config --features
 
 # Install patchelf (latest with unreleased bug fixes)
-curl -sLOk https://nixos.org/releases/patchelf/patchelf-0.10/patchelf-0.10.tar.gz
+# curl -sLOk https://nixos.org/releases/patchelf/patchelf-0.10/patchelf-0.10.tar.gz
 # check_sha256sum patchelf-0.9njs2.tar.gz $PATCHELF_HASH
 tar -xzf patchelf-0.10.tar.gz
 (cd patchelf-0.10 && ./configure && make && make install)

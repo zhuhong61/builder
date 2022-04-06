@@ -76,6 +76,10 @@ fi
         ${DOCKER_GPU_BUILD_ARG} \
         --build-arg "GPU_IMAGE=${GPU_IMAGE}" \
         --target "${TARGET}" \
+        --build-arg http_proxy=http://proxy-shm.intel.com:911 \
+        --build-arg https_proxy=http://proxy-shm.intel.com:911 \
+        --build-arg ftp_proxy=http://proxy-shm.intel.com:911 \
+        --network=host \
         -f "${TOPDIR}/manywheel/Dockerfile${DOCKERFILE_SUFFIX}" \
         "${TOPDIR}"
 )
